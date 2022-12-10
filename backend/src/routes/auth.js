@@ -66,10 +66,10 @@ authRoutes.post("/login", async (req, res) => {
         return;
     }
     const sessionID = generateID(16);
-    await dbConnection.execute("INSERT INTO `session` VALUES (?, ?)", [
-        sessionID,
-        user.Username,
-    ]);
+    await dbConnection.execute(
+        "INSERT INTO `session` (`SessionID`, `Username`) VALUES (?, ?)",
+        [sessionID, user.Username]
+    );
 
     console.log(`User ${user.Username} logged in with SessionID: ${sessionID}`);
 
