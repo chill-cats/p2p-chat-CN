@@ -1,0 +1,15 @@
+.card_info{
+    display: flex;
+    height: 50px;
+}
+
+.card_info h5{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+
+#avatar{
+    width: 50px;
+    clip-path: circle();
+}

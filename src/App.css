@@ -1,41 +1,80 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.container-fluid{
+  background-color: #EDF0F4 ;
+  padding:10px;
+  height: 100%;
+}
+.row{
+  /* margin:10px; */
+  padding: 10px;
+}
+
+.listChat{
+  overflow-y: scroll;
+  height: 100%;
+}
+::-webkit-scrollbar-track
+{
+	display: none;
+}
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color:#EDF0F4;
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: #B2B9C5;
+  border-radius: 10px;
+}
+
+.chatBox{
+  background-color: #EDF0F4;
+  margin:5px;
+  border-radius: 7px;
+}
+
+.app_root{
+  padding: 10px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #B2B9C5;
+
+}
+
+.header_sidebar{
+  border-bottom: 1px #B2B9C5 solid;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.UserCard{
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#image{
+  text-align: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  clip-path: circle();
+}
+.user_info{
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.list-group-item:hover{
+  background-color:#EDF0F4;
 }
 
-.card {
-  padding: 2em;
+.searchBar{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: fit-content;
 }
 
-.read-the-docs {
-  color: #888;
+#searchBar{
+  margin-bottom: 0px !important;
+}
+
+.chatBar{
+  height: fit-content ;
 }

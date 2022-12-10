@@ -1,0 +1,25 @@
+.fileType_info{
+    display: flex;
+    padding: 10px;
+}
+.fileType_info h5{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.file_shared{
+    padding-top: 0px;
+}
+.file_shared h3{
+    color: #3C444B;
+}
+.fileType{
+    overflow-y: scroll;    
+    height:400px;
+}
+svg{
+    background-color: blanchedalmond;
+    padding:10px;
+    border-radius: 10px;
+}
