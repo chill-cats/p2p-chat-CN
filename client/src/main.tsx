@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./samples/node-api";
 import "styles/index.css";
 import { ToastProvider } from "rc-toastr";
 import "rc-toastr/dist/index.css"; // import the css file
@@ -9,12 +8,12 @@ import { Login } from "./components/Login";
 import {
     createBrowserRouter,
     RouterProvider,
-    Route,
     redirect,
 } from "react-router-dom";
 import { Signup } from "./components/Signup";
 import { Chat } from "./components/Chat";
 import { UserContext, UserProvider } from "./contexts/UserContext";
+import { FindMoreFriend } from "./components/FindMoreFriend";
 
 const App = () => {
     const [user, setUser] = React.useState(false);
@@ -43,6 +42,16 @@ const App = () => {
         {
             path: "/",
             element: <Chat />,
+            loader: () => {
+                if (!token) {
+                    return redirect("/login");
+                }
+                return null;
+            },
+        },
+        {
+            path: "/search_friend",
+            element: <FindMoreFriend />,
             loader: () => {
                 if (!token) {
                     return redirect("/login");

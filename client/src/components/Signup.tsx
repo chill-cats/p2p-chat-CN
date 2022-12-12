@@ -22,7 +22,7 @@ export const Signup = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data);
         setIsLoading(true);
-        const resp = await fetch("http://localhost:3000/auth/register", {
+        const resp = await fetch(`${process.env.VITE_API}/auth/register`, {
             method: "POST",
             body: JSON.stringify({
                 username: data.username,

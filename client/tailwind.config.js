@@ -14,6 +14,9 @@ module.exports = {
                 chat_orange: "#F4A261",
                 chat_red: "#E76F51",
             },
+            fontFamily: {
+                cursive: ["Dancing Script"],
+            },
         },
     },
 };

@@ -58,4 +58,30 @@ function parseMessage(data: Buffer, timestamp: Epoch): ChatMessage {
 
     return new ChatMessage(messageType, authorName, timestamp, content);
 }
-export { ChatMessage, parseMessage };
+
+function buildMessage(
+    messageType: ChatMessageType,
+    authorName: string,
+    content: ContentType
+): Buffer {
+    const message = Buffer.allocUnsafe(
+        5 + 4 + authorName.length + 1 + 4 + content.length
+    );
+    message.write("P2PCP", 0, "utf-8");
+    message.writeUInt32LE(authorName.length, 5);
+    message.write(authorName, 5 + 4, "utf-8");
+    message[5 + 4 + authorName.length] = messageType === "text" ? 0 : 1;
+    message.writeUint32LE(content.length, 5 + 4 + authorName.length + 1);
+    if (messageType === "text") {
+        message.write(
+            content as string,
+            5 + 4 + authorName.length + 1 + 4,
+            "utf-8"
+        );
+    } else {
+        (content as Buffer).copy(message, 5 + 4 + authorName.length + 1 + 4);
+    }
+
+    return message;
+}
+export { ChatMessage, parseMessage, buildMessage };

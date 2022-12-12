@@ -12,7 +12,7 @@ export const Login = () => {
     const inputIDs = React.useId();
 
     const [isLoading, setIsLoading] = useState(false);
-    const { token, setToken } = useContext(UserContext);
+    const { token, setToken, setUsername } = useContext(UserContext);
 
     const {
         register,
@@ -22,7 +22,7 @@ export const Login = () => {
     } = useForm<Inputs>({ defaultValues: { username: "", password: "" } });
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        const resp = await fetch("http://localhost:3000/auth/login", {
+        const resp = await fetch(`${import.meta.env.VITE_API}/auth/login`, {
             method: "POST",
             body: JSON.stringify({
                 username: data.username,
@@ -42,6 +42,7 @@ export const Login = () => {
         }
 
         setToken(resp.token);
+        setUsername(resp.username);
     };
     return (
         <div className="w-screen h-screen bg-chat_darkgreen grid place-content-center text-white space-y-2">
