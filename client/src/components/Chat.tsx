@@ -123,7 +123,7 @@ export const Chat = () => {
             port: 2510,
         });
         con.on("connect", () => {
-            const message = buildMessage("text", "nhan123", messageToSend);
+            const message = buildMessage("text", username, messageToSend);
             con.write(message);
             con.end();
 
@@ -132,27 +132,25 @@ export const Chat = () => {
                     currentConversation.get(activeConversationUsername!) ===
                     undefined
                 ) {
-                    console.log(" set own Undefined");
                     return currentConversation.set(
                         activeConversationUsername!,
                         List([
                             new ChatMessage(
                                 "text",
-                                "nhan123",
+                                username,
                                 Date.now(),
                                 Buffer.from(messageToSend, "utf-8")
                             ),
                         ])
                     );
                 }
-                console.log("set own defined");
                 return currentConversation.update(
                     activeConversationUsername!,
                     (c) =>
                         c!.push(
                             new ChatMessage(
                                 "text",
-                                "nhan123",
+                                username,
                                 Date.now(),
                                 Buffer.from(messageToSend, "utf-8")
                             )
@@ -186,7 +184,7 @@ export const Chat = () => {
     }, []);
 
     const [ipAddress, setIPAddress] = React.useState("");
-    const [port, setPort] = React.useState("");
+    const [port, setPort] = React.useState("2510");
 
     const updateConnectionInfo = async (ip_address: string, port: string) => {
         await fetch(
