@@ -1,0 +1,3 @@
+# Peer to peer chat application - Semester 221
+
+Built using NodeJS, MariaDB, React, Electron...
